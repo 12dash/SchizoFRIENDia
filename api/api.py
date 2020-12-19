@@ -16,6 +16,7 @@ def home():
 @app.route("/predict")
 def predict():
     img = request.files['file']
+    print(img)
     img = base64.b64decode(img)
     buf = io.BytesIO(img)
     img = Image.open(buf)
