@@ -2,23 +2,55 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import axios from 'axios';
 class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+          this.state = {
+            selectedFile: null
+          }
+       
+      }
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
+  componentDidMount() {
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"1ba12c38881635552a178a7b7869a03e6","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+  }
+  onChangeHandler=event=>{
+    this.setState({
+      selectedFile: event.target.files[0],
+      loaded: 0,
+    })
+  }
+  onClickHandler = () => {
+    const data = new FormData() 
+    data.append('file', this.state.selectedFile)
+    axios.post("/upload", data, { // receive two parameter endpoint url ,form data 
+      })
+      .then(res => { // then print response status
+        console.log(res.statusText)
+      })
+}
 render() {
     const { user } = this.props.auth;
 return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
-            <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are now logged in!
-              </p>
-            </h4>
+            <div className="form-group files">
+                <label>Upload Your File</label>
+                <input type="file" className="form-control" name="file" onChange={this.onChangeHandler}></input>
+                <button style={{margin: "0 auto"}} type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
+            </div>
             <button
               style={{
                 width: "150px",
