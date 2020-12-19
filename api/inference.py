@@ -100,29 +100,20 @@ class Predict:
         weight = torch.load('weight.pth', map_location='cpu')
         model = SimpleGenerator()
         model.load_state_dict(weight)
-        model.eval()
-        
-        imgSmall = img.resize((256,256),resample=Image.BILINEAR)
-        imgSmall.save('./images/test.jpg')
+        model.eval()      
 
-        name_list = os.listdir('images')
-        name_list = [f for f in name_list if '.jpg' in f]
-        if not os.path.exists('results'):
-            os.mkdir('results')
-        for name in tqdm(name_list):
-            load_path = os.path.join('images', name)
-            save_path = os.path.join('results', name)
-            raw_image = cv2.imread(load_path)
-            image = raw_image/127.5 - 1
-            image = image.transpose(2, 0, 1)
-            image = torch.tensor(image).unsqueeze(0)
-            output = model(image.float())
-            output = output.squeeze(0).detach().numpy()
-            output = output.transpose(1, 2, 0)
-            output = (output + 1) * 127.5
-            cv2.imwrite(save_path, output)
-            self.output = np.ascontiguousarray(output)
-            return 
+        imgSmall = img.resize((256,256),resample=Image.BILINEAR) 
+
+        raw_image = cv2.imread(imgSmall)
+        image = raw_image/127.5 - 1
+        image = image.transpose(2, 0, 1)
+        image = torch.tensor(image).unsqueeze(0)
+        output = model(image.float())
+        output = output.squeeze(0).detach().numpy()
+        output = output.transpose(1, 2, 0)
+        output = (output + 1) * 127.5
+        self.output = np.ascontiguousarray(output)
+        return 
             
         
             
