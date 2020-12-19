@@ -9,7 +9,7 @@ class Landing extends Component {
             <h4>
               Enabling <b>Schizophrenic</b> patients to visualize the voices in their head
             </h4>
-            <p className="flow-text grey-text text-darken-1">
+            <p className="flow-text grey-text text-darken-1">              
               Talk to the voices in your head as 2D avatars like as if they are your friends!
             </p>
             <br />
