@@ -4,19 +4,14 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import axios from 'axios';
 import Chat from '../chat';
-import FileBase64 from 'react-file-base64';
 
 class Dashboard extends Component {
-    constructor() {
-        super()
-        this.state = {
-          files: []
-        }
-      }
-    
-      // Callback~
-      getFiles(files){
-        this.setState({ files: files })
+    constructor(props) {
+        super(props);
+          this.state = {
+            selectedFile: null
+          }
+       
       }
   onLogoutClick = e => {
     e.preventDefault();
@@ -40,8 +35,8 @@ class Dashboard extends Component {
   }
   onClickHandler = () => {
     const data = new FormData() 
-    data.append('file', this.state.files)
-    axios.post("http://localhost:5001/predict", data, { // receive two parameter endpoint url ,form data 
+    data.append('file', this.state.selectedFile)
+    axios.post("/upload", data, { // receive two parameter endpoint url ,form data 
       })
       .then(res => { // then print response status
         console.log(res.statusText)
@@ -53,9 +48,6 @@ render() {
       <div className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
-          <FileBase64
-        multiple={ true }
-        onDone={ this.getFiles.bind(this) } />
             <div className="form-group files">
                 <label>Upload Your File</label>
                 <input type="file" className="form-control" name="file" onChange={this.onChangeHandler}></input>
