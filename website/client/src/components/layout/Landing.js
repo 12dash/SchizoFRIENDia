@@ -7,13 +7,10 @@ class Landing extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
+              Enabling <b>Schizophrenic</b> patients to visualize the voices in their head
             </h4>
             <p className="flow-text grey-text text-darken-1">
-              Create a (minimal) full-stack app with user authentication via
-              passport and JWTs
+              Talk to the voices in your head as 2D avatars like as if they are your friends!
             </p>
             <br />
             <div className="col s6">
