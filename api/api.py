@@ -15,13 +15,10 @@ def home():
 
 @app.route("/predict", methods = ['POST'])
 def predict():
-    print(request.files)
-    img = request.files['files']
-    print(type(img))
+    img = request.files['file'].read() 
     buf = io.BytesIO(img)   
     img = Image.open(buf)
     img =  base64.b64encode(Predict(img).output)   
-    print(img) 
     return img
 
 if __name__ == "__main__":

@@ -102,9 +102,9 @@ class Predict:
         model.load_state_dict(weight)
         model.eval()      
 
-        imgSmall = img.resize((256,256),resample=Image.BILINEAR) 
-
-        raw_image = cv2.imread(imgSmall)
+        imgSmall = img.resize((256,256),resample=Image.BILINEAR)
+        imgSmall.save("test.png")
+        raw_image = cv2.imread("test.png")    
         image = raw_image/127.5 - 1
         image = image.transpose(2, 0, 1)
         image = torch.tensor(image).unsqueeze(0)
@@ -112,7 +112,9 @@ class Predict:
         output = output.squeeze(0).detach().numpy()
         output = output.transpose(1, 2, 0)
         output = (output + 1) * 127.5
+        cv2.imwrite('test.png',output)
         self.output = np.ascontiguousarray(output)
+        
         return 
             
         
