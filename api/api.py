@@ -13,14 +13,16 @@ CORS(app)
 def home():
     return "Backend Server"
 
-@app.route("/predict")
+@app.route("/predict", methods = ['POST'])
 def predict():
-    img = request.files['file']
+    img = request.files['file'].read()
     print(img)
-    img = base64.b64decode(img)
-    buf = io.BytesIO(img)
+    #img = base64.b64decode(img)
+    buf = io.BytesIO(img)   
     img = Image.open(buf)
-    img =  base64.b64encode(Predict().output)    
+    buf.close()
+    img =  base64.b64encode(Predict(img).output)   
+    print(img) 
     return img
 
 if __name__ == "__main__":
