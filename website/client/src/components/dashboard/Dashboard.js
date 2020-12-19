@@ -8,34 +8,42 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 render() {
-    const { user } = this.props.auth;
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are now logged in!
+  const { user } = this.props.auth;
+  return (
+    <div className="container valign-wrapper">
+      <div className="row">
+        <div className="col s12 center-align">
+          <h4>
+            <b>Hey there,</b> {user.name.split(" ")[0]}
+            <p className="flow-text grey-text text-darken-1">
+              You are now logged in!
               </p>
-            </h4>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
+          </h4>
+          <iframe
+            allow="microphone;"
+            width="500"
+            height="430"
+            src="https://console.dialogflow.com/api-client/demo/embedded/b5c7a279-13b0-4a2d-922f-ce91adfb88b5">
+          </iframe>
+
+          <br />
+          <button
+            style={{
+              width: "150px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+              marginTop: "1rem"
+            }}
+            onClick={this.onLogoutClick}
+            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+          >
+            Logout
             </button>
-          </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 }
 Dashboard.propTypes = {
   logoutUser: PropTypes.func.isRequired,
