@@ -65,13 +65,13 @@ class Dashboard extends Component {
             <br />
             {
               this.state.base64File ?
-                <div className="row">
-                  <div className="col center-align">
-                    <img id="bannerImg" src={this.state.base64File} />
+                <div className="row valign-wrapper">
+                  <div className="col s3 center-align offset-s1">
+                    <img id="bannerImg" src={this.state.base64File} style = {{borderRadius : "10%"}} />
                   </div>
-                  <div className="col-1 flow-text grey-text text-darken-1 left-align vert-align">
-                    See that's the person who is the voice in the head.
-                    <br/> Its as blurry as the voices. 
+                  <div className="col s6 offset-s3 flow-text grey-text text-darken-1 left-align" >
+                    See that's the person who is the voice in the head. <br />
+                    Its as blurry as the voices. 
                   </div>
                 </div>
                 : <></>

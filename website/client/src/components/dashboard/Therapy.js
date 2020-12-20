@@ -33,21 +33,21 @@ class Therapy extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <div className="container valign-wrapper">
-        <div className="row">
-          <div className="col s6 center-align">
-          <div className="large big-heading">
-              This is the incarnation of your voice!
-            </div>
-            <img src="" id="tableBanner" height="500px" style={{marginBottom:"10px"}}/>
-            <Link to="/avatar" className="btn btn-large waves-effect waves-light hoverable blue accent-3">End the session</Link>
+      <div className="container ">
+        <br />
+        <br />
+        <br />
+
+        <div className="row valign-wrapper">
+          <div className="col s6 center-align" >
+            <img src="" id="tableBanner" height="300px" style={{ marginBottom: "10px", borderRadius: "20%" }} />
           </div>
-          <div className="col s6 center-align" style={{marginTop:"150px"}}>
-            <h1 className="large">Therapy</h1>
-            <div className="flow-text grey-text text-darken-1">
-              Now, face your fears by clicking the chat icon at the bottom-right corner of your screen and talk to the voice in your head. They may not be as scary as you perceive it to be.
-            </div>
+          <div className="col s6 center-align" style = {{fontSize:"large"}}>
+            Click the icon in the bottom right
           </div>
+        </div>
+        <div className="" style = {{textAlign:"center"}}>
+          <Link to="/avatar" className="btn btn-large waves-effect waves-light hoverable blue accent-3">End the session</Link>
         </div>
       </div>
     );
