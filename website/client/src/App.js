@@ -11,7 +11,12 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+<<<<<<< HEAD
 import Therapy from "./components/dashboard/Therapy";
+=======
+import Avatar from "./components/avatar/Avatar";
+
+>>>>>>> e6748a72a3998b980c1179b156a1c6f7df1ad1c0
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -41,8 +46,12 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
+<<<<<<< HEAD
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/therapy" component={Therapy} />
+=======
+              <PrivateRoute exact path="/dashboard" component={Avatar} />
+>>>>>>> e6748a72a3998b980c1179b156a1c6f7df1ad1c0
             </Switch>
           </div>
         </Router>
