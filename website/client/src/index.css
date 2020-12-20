@@ -68,3 +68,16 @@ code {
   text-transform: capitalize;
   text-align: center;
 }
+
+.vert-align {
+  display: table-cell;
+  width: 250px;
+  height: 200px;
+  padding: 10px;
+  padding-top: 5vh;
+  vertical-align: middle;
+}
+
+.big-heading {
+  font-size: 40px;
+}

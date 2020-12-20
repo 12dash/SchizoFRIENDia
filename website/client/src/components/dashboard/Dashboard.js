@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
@@ -13,18 +14,17 @@ class Dashboard extends Component {
     }
   }
   onLogoutClick = e => {
-    e.preventDefault();
-    this.props.logoutUser();
+    return <Redirect to="/therapy" />;
   };
   componentDidMount() {
-    (function (d, m) {
-      var kommunicateSettings =
-        { "appId": "1ba12c38881635552a178a7b7869a03e6", "popupWidget": true, "automaticChatOpenOnNavigation": true };
-      var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-      s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-      var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-      window.kommunicate = m; m._globals = kommunicateSettings;
-    })(document, window.kommunicate || {});
+    // (function (d, m) {
+    //   var kommunicateSettings =
+    //     { "appId": "1ba12c38881635552a178a7b7869a03e6", "popupWidget": true, "automaticChatOpenOnNavigation": true };
+    //   var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+    //   s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+    //   var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+    //   window.kommunicate = m; m._globals = kommunicateSettings;
+    // })(document, window.kommunicate || {});
   }
   onChangeHandler = event => {
     this.setState({
@@ -42,6 +42,7 @@ class Dashboard extends Component {
         console.log(res.statusText)
         const img = res.data;
         this.setState({ base64File: 'data:image/png;base64,' + img });
+        localStorage.setItem("imgData", 'data:image/png;base64,' + img);
       })
       .catch(err => {
         console.log(err)
@@ -67,26 +68,16 @@ class Dashboard extends Component {
               this.state.base64File ?
                 <div className="row">
                   <div className="col center-align">
-                    <img src={this.state.base64File} />
+                    <img id="bannerImg" src={this.state.base64File} />
                   </div>
-                  <div className="col-1 flow-text grey-text text-darken-1 left-align">
+                  <div className="col-1 flow-text grey-text text-darken-1 left-align vert-align">
                     See that's the person who is the voice in the head.
                     <br/> Its as blurry as the voices. 
                   </div>
                 </div>
                 : <></>
             }
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3" >
-              Logout
-            </button>
+            <Link to="/therapy" className="btn btn-large waves-effect waves-light hoverable blue accent-3">Therapy</Link>
           </div>
         </div>
       </div>
