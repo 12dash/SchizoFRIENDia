@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
@@ -74,17 +75,7 @@ class Avatar extends Component {
                             </VerticalTimelineElement>
                         </VerticalTimeline>
                         <div className="row center-align">
-                            <button
-                                style={{
-                                    width: "150px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px",
-                                    marginTop: "1rem"
-                                }}
-                                onClick={this.onLogoutClick}
-                                className="btn btn-large waves-effect waves-light hoverable blue accent-3" >
-                                Logout
-                            </button>
+                            <Link to="/dashboard" className="btn btn-large waves-effect waves-light hoverable blue accent-3">Let's begin</Link>                            
                         </div>
                     </div>
                 </div>

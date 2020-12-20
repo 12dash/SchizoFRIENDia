@@ -40,7 +40,7 @@ class Therapy extends Component {
               This is the incarnation of your voice!
             </div>
             <img src="" id="tableBanner" height="500px" style={{marginBottom:"10px"}}/>
-            <Link to="/dashboard" className="btn btn-large waves-effect waves-light hoverable blue accent-3">Dashboard</Link>
+            <Link to="/avatar" className="btn btn-large waves-effect waves-light hoverable blue accent-3">End the session</Link>
           </div>
           <div className="col s6 center-align" style={{marginTop:"150px"}}>
             <h1 className="large">Therapy</h1>
