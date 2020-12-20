@@ -42,8 +42,7 @@ class Dashboard extends Component {
         console.log(res)
         console.log(res.statusText)
         const img = res.data;
-        this.setState({base64File: "data:image/png;base64," + img});
-        console.log(this.state.base64File);
+        this.setState({base64File: 'data:image/png;base64,'+img});    
       })
       .catch(err => {
         console.log(err)
@@ -59,7 +58,7 @@ render() {
                 <label>Upload Your File</label>
                 <input type="file" className="form-control" name="file" onChange={this.onChangeHandler}></input>
                 <button style={{margin: "0 auto"}} type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
-                {this.state.base64File ? <img src={this.state.base64File}/>: ''}
+                {this.state.base64File ? <img src = {(this.state.base64File)}/>: ''}
             </div>
             <button
               style={{

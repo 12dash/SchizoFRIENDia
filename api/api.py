@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS, cross_origin
 from inference import Predict 
 
@@ -14,21 +14,16 @@ CORS(app)
 def home():
     return "Backend Server"
 
-<<<<<<< HEAD
 @app.route("/predict", methods = ['GET','POST'])
-=======
-@app.route("/predict", methods = ['GET', 'POST'])
->>>>>>> 8ad0f8d548c349e34f56da6be36a88b13da14796
 def predict():
     img = request.files['file'].read() 
     buf = io.BytesIO(img)   
     img = Image.open(buf)
-    img =  base64.b64encode(Predict(img).output)
-    # imgdata = base64.b64decode(img)   
-    # filename = 'file.png'
-    # with open(filename, 'wb') as f:
-    #     f.write(imgdata)
-    
+    img = Predict(img)
+
+    with open("test.png", "rb") as img_file:
+        img = base64.b64encode(img_file.read())
+        
     return img
 
 if __name__ == "__main__":

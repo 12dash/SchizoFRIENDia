@@ -112,9 +112,7 @@ class Predict:
         output = output.squeeze(0).detach().numpy()
         output = output.transpose(1, 2, 0)
         output = (output + 1) * 127.5
-        cv2.imwrite('test.png',output)
-        self.output = np.ascontiguousarray(output)
-        
+        cv2.imwrite('test.png',output)        
         return 
             
         
