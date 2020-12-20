@@ -1,8 +1,8 @@
 # SchizoFRIENDia
 Making friends with the voices in your head
-Idea: A friendly web app which enables schizophrenic patients to conceptualize the voices in their head as 2D avatars and interact with them 
-Medical concept: Avatar Therapy 
-Technology usage: Artificial Intelligence, Image Processing and Natural Language Processing.
+<br>Idea: A friendly web app which enables schizophrenic patients to conceptualize the voices in their head as 2D avatars and interact with them 
+<br>Medical concept: Avatar Therapy 
+<br>Technology usage: Artificial Intelligence, Image Processing and Natural Language Processing.
 
 
 # API
