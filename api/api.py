@@ -13,7 +13,7 @@ CORS(app)
 def home():
     return "Backend Server"
 
-@app.route("/predict", methods = ['POST'])
+@app.route("/predict", methods = ['GET','POST'])
 def predict():
     img = request.files['file'].read() 
     buf = io.BytesIO(img)   
